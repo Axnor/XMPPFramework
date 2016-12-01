@@ -468,7 +468,8 @@ static XMPPMessageArchivingCoreDataStorage *sharedInstance;
 				if (didCreateNewContact) // [contact isInserted] doesn't seem to work
 				{
 					XMPPLogVerbose(@"Inserting contact...");
-					
+                    if([self.delegate respondsToSelector:@selector(didInsertNewContact:)])
+                        [self.delegate didInsertNewContact:contact];
 					[contact willInsertObject];       // Override hook
 					[self willInsertContact:contact]; // Override hook
 					[moc insertObject:contact];

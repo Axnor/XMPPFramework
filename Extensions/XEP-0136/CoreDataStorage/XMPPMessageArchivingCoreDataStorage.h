@@ -5,6 +5,11 @@
 #import "XMPPMessageArchiving_Message_CoreDataObject.h"
 #import "XMPPMessageArchiving_Contact_CoreDataObject.h"
 
+@protocol XMPPMessageArchivingDelegate <NSObject>
+
+- (void)didInsertNewContact:(XMPPMessageArchiving_Contact_CoreDataObject *)newContact;
+
+@end
 
 @interface XMPPMessageArchivingCoreDataStorage : XMPPCoreDataStorage <XMPPMessageArchivingStorage>
 {
@@ -34,6 +39,8 @@
 
 @property (strong) NSString *messageEntityName;
 @property (strong) NSString *contactEntityName;
+
+@property (weak, nonatomic) id<XMPPMessageArchivingDelegate> delegate;
 
 - (NSEntityDescription *)messageEntity:(NSManagedObjectContext *)moc;
 - (NSEntityDescription *)contactEntity:(NSManagedObjectContext *)moc;
