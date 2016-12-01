@@ -30,6 +30,8 @@
 
 @implementation XMPPMessageArchivingCoreDataStorage
 
+@synthesize delegate;
+
 static XMPPMessageArchivingCoreDataStorage *sharedInstance;
 
 + (instancetype)sharedInstance
