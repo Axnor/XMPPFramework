@@ -156,21 +156,9 @@ NSString *const XMPPOutgoingFileTransferErrorDomain = @"XMPPOutgoingFileTransfer
     return NO;
   }
 
-  // oldcode
-    /*
-     if (!_recipientJID || ![_recipientJID isFull]) {
-     if (errPtr) {
-     NSString *errMsg = @"You must provide a recipient (including a resource).";
-     *errPtr = [self localErrorWithMessage:errMsg code:-1];
-     }
-     
-     return NO;
-     }
-     
-     */
-  if (!_recipientJID) {
+  if (!_recipientJID || ![_recipientJID isFull]) {
     if (errPtr) {
-      NSString *errMsg = @"You must provide a recipient.";
+      NSString *errMsg = @"You must provide a recipient (including a resource).";
       *errPtr = [self localErrorWithMessage:errMsg code:-1];
     }
 
