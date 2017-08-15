@@ -297,7 +297,7 @@
 	
     if (match == nil) {
         if([[message to] isEqualToJID:[message from]]) {
-            NSString *forwardedElement = [[message elementForName:@"result"] elementForName:@"forwarded"];
+            NSXMLElement *forwardedElement = [[message elementForName:@"result"] elementForName:@"forwarded"];
             if([forwardedElement elementForName:@"message"])
                 return NO;
         }
