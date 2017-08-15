@@ -296,7 +296,7 @@
 	}
 	
     if (match == nil) {
-        if([[message to] isEqualToJID:[message from]]) {
+        if([[[message to] bareJID] isEqualToJID:[[message from] bareJID]]) {
             NSXMLElement *forwardedElement = [[message elementForName:@"result"] elementForName:@"forwarded"];
             if([forwardedElement elementForName:@"message"])
                 return NO;
