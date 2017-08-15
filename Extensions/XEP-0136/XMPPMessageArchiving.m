@@ -295,9 +295,18 @@
 			match = match_domain;
 	}
 	
+    if (match == nil) {
+        if([[message to] isEqualToJID:[message from]]) {
+            NSString *forwardedElement = [[message elementForName:@"result"] elementForName:@"forwarded"];
+            if([forwardedElement elementForName:@"message"])
+                return NO;
+        }
+        
+    }
+    
 	if (match == nil)
 	{
-		// Third priority - default element
+		// fourth priority - default element
 		
 		match = [preferences elementForName:@"default"];
 	}
